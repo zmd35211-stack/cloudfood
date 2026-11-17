@@ -1,0 +1,716 @@
+
+/* =====================================================
+   CLOUDFOOD - RESPONSIVE FOOD ORDERING APPLICATION
+   ===================================================== */
+
+/* 1. GLOBAL RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fffaf5;
+    color: #282828;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* 2. NAVIGATION BAR
+===================================================== */
+
+.navbar {
+    width: 100%;
+    min-height: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding: 14px 5%;
+
+    background: #ffffff;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.logo {
+    font-size: clamp(23px, 3vw, 30px);
+    font-weight: 800;
+    color: #252525;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #fc641e;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 3vw, 35px);
+}
+
+nav a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #fc641e;
+}
+
+.cart-button,
+.hero-button,
+.checkout-button {
+    background: #fc641e;
+    color: #ffffff;
+
+    border: none;
+    padding: 12px 20px;
+    border-radius: 9px;
+
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.cart-button:hover,
+.hero-button:hover,
+.checkout-button:hover {
+    background: #e95312;
+    transform: translateY(-2px);
+}
+
+/* 3. HERO SECTION
+===================================================== */
+
+.hero {
+    min-height: 390px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 65px 7%;
+
+    background: linear-gradient(
+        110deg,
+        #fff0df,
+        #ffdfc8
+    );
+}
+
+.hero > div {
+    max-width: 750px;
+}
+
+.tagline {
+    color: #fc641e;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.15;
+    margin-bottom: 18px;
+    color: #252525;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #444444;
+}
+
+.hero-button {
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* 4. MAIN CONTENT
+===================================================== */
+
+main {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 65px 5%;
+}
+
+section {
+    width: 100%;
+    margin-bottom: 75px;
+    min-width: 0;
+}
+
+section h2 {
+    font-size: clamp(25px, 3vw, 34px);
+    margin-bottom: 28px;
+    color: #252525;
+}
+
+/* 5. RESTAURANT GRID
+===================================================== */
+
+/*
+Supports both:
+.restaurant-grid
+#restaurant-list
+*/
+
+.restaurant-grid,
+#restaurant-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(min(100%, 280px), 1fr)
+        );
+
+    gap: 24px;
+    width: 100%;
+    min-width: 0;
+}
+
+.card {
+    width: 100%;
+    min-width: 0;
+
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.11);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    font-size: 21px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    color: #252525;
+}
+
+.card-content p {
+    color: #777777;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* 6. FOOD MENU GRID
+===================================================== */
+
+/*
+Supports both:
+.food-grid
+#food-list
+*/
+
+.food-grid,
+#food-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(min(100%, 260px), 1fr)
+        );
+
+    gap: 26px;
+    width: 100%;
+    min-width: 0;
+}
+
+#food-list .card img,
+.food-grid .card img {
+    width: 100%;
+    height: 210px;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #f1e9e2;
+}
+
+#food-list .card-content,
+.food-grid .card-content {
+    padding: 20px;
+}
+
+/* 7. ADD TO CART BUTTON
+===================================================== */
+
+.add-button {
+    display: inline-block;
+
+    background: #138b52;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 11px 18px;
+
+    font-weight: 700;
+
+    transition: background 0.2s ease;
+}
+
+.add-button:hover {
+    background: #0d7041;
+}
+
+/* 8. SHOPPING CART PANEL
+===================================================== */
+
+.cart-panel {
+    position: fixed;
+
+    right: 0;
+    top: 0;
+
+    width: min(400px, 100%);
+    height: 100vh;
+    height: 100dvh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    z-index: 200;
+
+    padding: 25px;
+
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.cart-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.cart-heading h2 {
+    font-size: 23px;
+}
+
+.cart-heading button {
+    border: none;
+    background: none;
+
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.cart-panel h3 {
+    margin: 25px 0;
+}
+
+.checkout-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* 9. FOOTER
+===================================================== */
+
+footer {
+    width: 100%;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    background: #252525;
+    color: #ffffff;
+
+    line-height: 2;
+}
+
+/* 10. TABLET RESPONSIVENESS
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 14px 4%;
+        gap: 15px;
+    }
+
+    nav {
+        gap: 16px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 50px 4%;
+    }
+
+    .hero {
+        min-height: 350px;
+        padding: 55px 5%;
+    }
+
+}
+
+/* 11. MOBILE RESPONSIVENESS
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 13px 5%;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .cart-button {
+        padding: 10px 13px;
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 330px;
+        padding: 45px 6%;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 40px 5%;
+    }
+
+    section {
+        margin-bottom: 50px;
+    }
+
+    section h2 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .restaurant-grid,
+    #restaurant-list,
+    .food-grid,
+    #food-list {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    #food-list .card img,
+    .food-grid .card img {
+        height: 200px;
+    }
+
+    .card-content {
+        padding: 18px;
+    }
+
+}
+
+/* 12. SMALL MOBILE SCREENS
+===================================================== */
+
+@media (max-width: 360px) {
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 31px;
+    }
+
+    .cart-button {
+        padding: 9px 10px;
+    }
+
+}
+
+/* =========================================
+   CLOUDFOOD FOOD MENU WITH IMAGES
+========================================= */
+
+#food-list .food-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #ffffff;
+}
+
+#food-list .food-card > img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: #f1e9e2;
+    transition: transform 0.3s ease;
+}
+
+#food-list .food-card:hover > img {
+    transform: scale(1.03);
+}
+
+#food-list .food-card .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+#food-list .food-category {
+    color: #fc641e;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+#food-list .food-card h3 {
+    margin: 0;
+}
+
+#food-list .food-card .food-price {
+    color: #138b52;
+    font-size: 21px;
+    margin: 5px 0;
+}
+
+#food-list .food-card .add-button {
+    margin-top: auto;
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+}
+
+#food-list .food-card.image-unavailable > img {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    #food-list .food-card > img {
+        height: 200px;
+    }
+}
+.food-image-placeholder {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1e9e2;
+    color: #777;
+    font-weight: 600;
+}
+
+/* CLOUDFOOD ORDER TRACKING */
+
+.tracking-search {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.tracking-search input {
+    flex: 1;
+    min-width: 200px;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.tracking-result {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 3px 15px #00000012;
+    line-height: 2;
+    overflow-wrap: anywhere;
+}
+
+.tracking-result h3 {
+    color: #fc641e;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    .tracking-search {
+        flex-direction: column;
+    }
+
+    .tracking-search button {
+        width: 100%;
+    }
+}
+
+/* CloudFood Order Progress Timeline */
+
+.tracking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.tracking-status {
+    background: #fff0e8;
+    color: #fc641e;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.timeline-heading {
+    margin-top: 28px;
+    margin-bottom: 20px;
+}
+
+.order-timeline {
+    margin: 20px 0 30px;
+    border-left: 3px solid #ddd;
+    padding-left: 25px;
+}
+
+.timeline-step {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding-bottom: 28px;
+    color: #999;
+}
+
+.timeline-step:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -39px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #ddd;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.timeline-step.completed {
+    color: #222;
+}
+
+.timeline-step.completed .timeline-dot {
+    background: #16a36a;
+}
+
+.timeline-content p {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #888;
+}

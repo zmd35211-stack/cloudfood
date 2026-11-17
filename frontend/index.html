@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudFood | Food Delivery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">Cloud<span>Food</span></div>
+ <nav>
+    <a href="./index.html">Home</a>
+    <a href="#restaurants">Restaurants</a>
+    <a href="#menu">Menu</a>
+    <a href="./register.html">Restaurant Register</a>
+    <a href="./login.html">Owner Login</a>
+    <a href="./admin.html">Dashboard</a>
+</nav> 
+    <button class="cart-button" onclick="toggleCart()">
+        🛒 Cart (<span id="cart-count">0</span>)
+    </button>
+</header>
+
+<section class="hero" id="home">
+    <div>
+        <p class="tagline">GOOD FOOD. GOOD MOOD.</p>
+        <h1>Delicious food,<br>delivered to your door.</h1>
+        <p>Discover restaurants and enjoy your favourite meals.</p>
+        <a href="#restaurants" class="hero-button">Explore Food</a>
+    </div>
+</section>
+
+<main>
+    <section id="restaurants">
+        <h2>Popular Restaurants</h2>
+        <div id="restaurant-list" class="restaurant-grid"></div>
+    </section>
+
+    <section id="menu">
+        <h2>Explore Our Menu</h2>
+        <div id="food-list" class="food-grid"></div>
+    </section>
+</main>
+
+<section id="order-tracking">
+
+    <h2>Track Your Order</h2>
+
+    <p>Enter your CloudFood order ID to view its status.</p>
+
+    <div class="tracking-search">
+
+        <input
+            type="number"
+            id="track-order-id"
+            placeholder="Enter Order ID"
+            min="1"
+        >
+
+        <button
+            class="hero-button"
+            onclick="trackOrder()"
+        >
+            Track Order
+        </button>
+
+    </div>
+
+    <div
+        id="order-tracking-result"
+        class="tracking-result"
+    ></div>
+
+</section>
+
+<aside id="cart-panel" class="cart-panel hidden">
+    <div class="cart-heading">
+        <h2>Your Cart</h2>
+        <button onclick="toggleCart()">✕</button>
+    </div>
+    <div id="cart-items"></div>
+    <h3>Total: ₹<span id="cart-total">0</span></h3>
+    <button class="checkout-button" onclick="checkout()">
+        Proceed to Checkout
+    </button>
+</aside>
+
+<footer>
+    <p>© 2026 CloudFood. Food delivery application project.</p>
+    <p>Built with Python, FastAPI and DevOps technologies.</p>
+</footer>
+
+<script src="./app.js" defer></script>
+</body>
+</html>

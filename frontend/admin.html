@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudFood | Admin Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card, .orders-panel {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px #00000012;
+        }
+
+        .stat-card h3 {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .orders-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        .orders-table th, .orders-table td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .orders-table th {
+            background: #fff4ed;
+        }
+
+        .orders-table select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .admin-message {
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .refresh-button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #fc641e;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .refresh-button:hover {
+            background: #e65312;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CloudFood Admin</h1>
+    <p>Restaurant Order Management</p>
+
+    <nav>
+        <a href="./index.html">Back to Home</a>
+    </nav>
+</header>
+
+    <main class="admin-container">
+
+        <div class="admin-header">
+            <div>
+                <h2>Order Dashboard</h2>
+                <p>Manage and monitor customer orders.</p>
+            </div>
+
+            <button class="refresh-button" onclick="loadOrders()">
+                Refresh Orders
+            </button>
+        </div>
+
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3>Total Orders</h3>
+                <p id="total-orders">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Pending Orders</h3>
+                <p id="pending-orders">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Preparing Orders</h3>
+                <p id="preparing-orders">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Delivered Orders</h3>
+                <p id="delivered-orders">0</p>
+            </div>
+        </div>
+
+        <section class="orders-panel">
+            <h2>Customer Orders</h2>
+
+            <div id="admin-message" class="admin-message">
+                Loading orders...
+            </div>
+
+            <div class="orders-table-wrapper">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Restaurant</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Update Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="orders-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="./admin.js" defer></script>
+</body>
+</html>
